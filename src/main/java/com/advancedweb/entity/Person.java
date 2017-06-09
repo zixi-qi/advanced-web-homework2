@@ -17,13 +17,28 @@ public class Person {
     private Long id;
 
     private String name;
+    private String location;
+    private String tel;
+    private int age;
+
+    public Set<Person> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Set<Person> friends) {
+        this.friends = friends;
+    }
+
     @Relationship(type = "FRIENDSHIP",direction = Relationship.UNDIRECTED)
     private Set<Person> friends;
 
     public Person(){}
 
-    public Person(String name){
+    public Person(String name,String location,String tel,int age){
         this.name = name;
+        this.location = location;
+        this.tel = tel;
+        this.age = age;
     }
 
     public void makeNewFriend(Person person){
@@ -50,6 +65,35 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%s@id%s",getName(),getId().toString());
     }
 
 }
